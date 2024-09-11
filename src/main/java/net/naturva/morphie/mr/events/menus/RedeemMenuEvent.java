@@ -102,6 +102,22 @@ public class RedeemMenuEvent implements Listener {
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
 			    		}
 		    		}
+				} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Maces.Name")))) {
+					event.setCancelled(true);
+					if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Maces")) {
+						event.setCancelled(true);
+						player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
+					} else {
+						if (!(plugin.addCredits.containsKey(player))) {
+							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
+							plugin.addCredits.put(player, "Maces");
+							player.closeInventory();
+						} else {
+							String skill = plugin.addCredits.get(player);
+							player.closeInventory();
+							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+						}
+					}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Axes.Name")))) {
 					event.setCancelled(true);
 					if (skillDisable == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Axes")) {

@@ -128,13 +128,10 @@ public class MorphRedeem extends JavaPlugin implements Listener {
     public ItemStack createInventoryItem(String paramString1, int paramInt, String paramString2, ArrayList<String> paramArrayList, boolean paramBoolean) {
     	ItemStack localItemStack = new ItemStack(Material.matchMaterial(paramString1), paramInt);
     	ItemMeta localItemMeta = localItemStack.getItemMeta();
-    	localItemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ATTRIBUTES });
-    	localItemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_POTION_EFFECTS });
-    	localItemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_DESTROYS });
     	if (paramBoolean) {
     		localItemMeta.addEnchant(Enchantment.DURABILITY, 1, true);
-    		localItemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
     	}
+		localItemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS, ItemFlag.HIDE_DESTROYS);
     	localItemMeta.setDisplayName(new StringUtils().addColor(paramString2));
     	localItemMeta.setLore(paramArrayList);
     	localItemStack.setItemMeta(localItemMeta);

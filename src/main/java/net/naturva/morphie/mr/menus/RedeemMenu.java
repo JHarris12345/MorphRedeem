@@ -297,6 +297,25 @@ public class RedeemMenu implements Listener {
 	    } else {
 	    	Redeem.setItem(31, this.plugin.createInventoryItem(this.plugin.getConfig().getString("Settings.GUI.Unarmed.ItemName"), 1, this.plugin.getMessage("Menu.Unarmed.Name"), Unarmed, false));
 	    }
+
+		ArrayList<String> maces = new ArrayList();
+		for (String s : plugin.getMessageList("Menu.Maces.Lore")) {
+			if (new McMMOMethods().getSkillCap("Maces") != 2147483647) {
+				maces.add(new StringUtils().addColor(s)
+						.replace("%SKILLLEVEL%", "" + new McMMOMethods().getSkillLevel(player, "Maces"))
+						.replace("%LEVELCAP%", "" + + new McMMOMethods().getSkillCap("Maces")));
+			} else {
+				maces.add(new StringUtils().addColor(s)
+						.replace("%SKILLLEVEL%", "" + new McMMOMethods().getSkillLevel(player, "Maces"))
+						.replace("%LEVELCAP%", "" + new StringUtils().addColor(plugin.getMessage("NoSkillCap"))));
+			}
+		}
+
+		if (skillDisable == true && replaceItem == true && this.plugin.getConfig().getStringList("Settings.DisabledSkills.SkillsToDisable").contains("Maces")) {
+			Redeem.setItem(39, this.plugin.createInventoryItem(this.plugin.getConfig().getString("Settings.DisabledSkills.ReplaceGUIItem.ItemName"), 1, this.plugin.getMessage("Menu.Maces.Name"), maces, false));
+		} else {
+			Redeem.setItem(39, this.plugin.createInventoryItem(this.plugin.getConfig().getString("Settings.GUI.Maces.ItemName"), 1, this.plugin.getMessage("Menu.Maces.Name"), maces, false));
+		}
 	    
 		ArrayList<String> Woodcutting = new ArrayList();
 	    for (String s : plugin.getMessageList("Menu.Woodcutting.Lore")) {
@@ -344,7 +363,7 @@ public class RedeemMenu implements Listener {
 	    
 	    int glassInt = this.plugin.getConfig().getInt("Settings.BackgroundGlassColor");
 	
-	    if (this.plugin.getConfig().getBoolean("Settings.PluginCredits.Enabled") == true) {
+	    if (this.plugin.getConfig().getBoolean("Settings.PluginCredits.Enabled")) {
 	    	Redeem.setItem(34, this.plugin.createInventoryItem(this.plugin.getConfig().getString("Settings.GUI.PluginCredits.ItemName"), 1, this.plugin.getMessage("Menu.PluginCredits.Name"), PluginCredits, false));	
 	    } else {
 	    	Redeem.setItem(34, this.plugin.createInventoryItem("BLACK_STAINED_GLASS_PANE", 1, " ", null, false));
@@ -374,7 +393,7 @@ public class RedeemMenu implements Listener {
 		Redeem.setItem(7, this.plugin.createInventoryItem("BLACK_STAINED_GLASS_PANE", 1, " ", null, false));
 		Redeem.setItem(37, this.plugin.createInventoryItem("BLACK_STAINED_GLASS_PANE", 1, " ", null, false));
 		Redeem.setItem(38, this.plugin.createInventoryItem("BLACK_STAINED_GLASS_PANE", 1, " ", null, false));
-		Redeem.setItem(39, this.plugin.createInventoryItem("BLACK_STAINED_GLASS_PANE", 1, " ", null, false));
+		//Redeem.setItem(39, this.plugin.createInventoryItem("BLACK_STAINED_GLASS_PANE", 1, " ", null, false));
 		Redeem.setItem(40, this.plugin.createInventoryItem("BLACK_STAINED_GLASS_PANE", 1, " ", null, false));
 		Redeem.setItem(41, this.plugin.createInventoryItem("BLACK_STAINED_GLASS_PANE", 1, " ", null, false));
 		Redeem.setItem(43, this.plugin.createInventoryItem("BLACK_STAINED_GLASS_PANE", 1, " ", null, false));
