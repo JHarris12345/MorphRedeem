@@ -7,11 +7,13 @@ D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\
 D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\files\PlayerFileMethods.java
 D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\menus\RedeemMenu.java
 D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\MorphRedeem.java
+D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\redeem\BedrockRedeemPrompt.java
+D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\redeem\CreditRedeem.java
+D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\redeem\RedeemDialog.java
 D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\util\Database\MySQLConnection.java
 D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\util\Database\RedisConnection.java
 D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\util\DataManager.java
 D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\util\McMMOMethods.java
-D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\util\MetricsLite.java
 D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\util\MorphRedeemExpansion.java
 D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\util\StringUtils.java
 D:\Coding\Projects\Java\Minecraft\Plugins\MorphRedeem\src\main\java\net\naturva\morphie\mr\util\UpdateChecker.java

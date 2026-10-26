@@ -88,8 +88,8 @@ public class Messages implements Listener {
 		cfg.addDefault("CreditRemoveMessage", "&7&b%CREDITS% &7credits have been removed from you!");
 		cfg.addDefault("CreditRemoveSuccessMessage", "&7Credit removal successfull!");
 		cfg.addDefault("CreditResetMessage", "&7Your credits have been reset!");
-		cfg.addDefault("Dialog.Title", "&9&lRedeem credits&8&l: &9&l%SKILL%");
-		cfg.addDefault("Dialog.Body", "&7Type how many credits to add to &b%SKILL% &7and press &aRedeem&7. &8(&bCredits&8: &7%CREDITS%&8)");
+		cfg.addDefault("Dialog.Title", "&9Redeem %SKILL% Credits");
+		cfg.addDefault("Dialog.Body", "&fType how many credits to add to the &9%SKILL% &fskill and press &aRedeem&f.\n&fYou have &9%CREDITS% &fcredits");
 		cfg.addDefault("Dialog.Placeholder", "Amount");
 		cfg.addDefault("Dialog.RedeemButton", "&aRedeem");
 		cfg.addDefault("Dialog.CancelButton", "&cCancel");
