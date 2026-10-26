@@ -25,7 +25,6 @@ import net.naturva.morphie.mr.events.PlayerFileEvent;
 import net.naturva.morphie.mr.events.chat.RedeemChatEvent;
 import net.naturva.morphie.mr.events.menus.RedeemMenuEvent;
 import net.naturva.morphie.mr.files.Messages;
-import net.naturva.morphie.mr.util.MetricsLite;
 import net.naturva.morphie.mr.util.MorphRedeemExpansion;
 import net.naturva.morphie.mr.util.Database.MySQLConnection;
 
@@ -54,8 +53,6 @@ public class MorphRedeem extends JavaPlugin implements Listener {
 		
 		getCommand("mr").setExecutor(new Commands(this));
 		
-        new MetricsLite(this);
-
 		Version = this.getDescription().getVersion();
 	    
 	    getServer().getConsoleSender().sendMessage(new StringUtils().addColor("&8[----------[&3MorphRedeem&8]----------]"));
@@ -129,9 +126,9 @@ public class MorphRedeem extends JavaPlugin implements Listener {
     	ItemStack localItemStack = new ItemStack(Material.matchMaterial(paramString1), paramInt);
     	ItemMeta localItemMeta = localItemStack.getItemMeta();
     	if (paramBoolean) {
-    		localItemMeta.addEnchant(Enchantment.DURABILITY, 1, true);
+    		localItemMeta.addEnchant(Enchantment.UNBREAKING, 1, true);
     	}
-		localItemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS, ItemFlag.HIDE_DESTROYS);
+		localItemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_DESTROYS);
     	localItemMeta.setDisplayName(new StringUtils().addColor(paramString2));
     	localItemMeta.setLore(paramArrayList);
     	localItemStack.setItemMeta(localItemMeta);
@@ -142,7 +139,7 @@ public class MorphRedeem extends JavaPlugin implements Listener {
     	ItemStack localItemStack = new ItemStack(Material.matchMaterial(paramString1), paramInt, (short) glassInt);
     	ItemMeta localItemMeta = localItemStack.getItemMeta();
     	if (paramBoolean) {
-    		localItemMeta.addEnchant(Enchantment.DURABILITY, 1, true);
+    		localItemMeta.addEnchant(Enchantment.UNBREAKING, 1, true);
     		localItemMeta.addItemFlags(new ItemFlag[] { ItemFlag.HIDE_ENCHANTS });
     	}
     	localItemMeta.setDisplayName(new StringUtils().addColor(paramString2));

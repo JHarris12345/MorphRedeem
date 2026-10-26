@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import net.naturva.morphie.mr.MorphRedeem;
+import net.naturva.morphie.mr.redeem.CreditRedeem;
 import net.naturva.morphie.mr.util.DataManager;
 
 public class RedeemMenuEvent implements Listener {
@@ -60,14 +61,13 @@ public class RedeemMenuEvent implements Listener {
 		    			event.setCancelled(true);
 		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 		    		} else {
-			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-			    			plugin.addCredits.put(player, "Acrobatics");
-			    			player.closeInventory();
-			    		} else {
+			    		if (plugin.addCredits.containsKey(player)) {
+			    			// Still waiting on the chat fallback for an earlier pick
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    		} else {
+			    			new CreditRedeem(plugin).start(player, "Acrobatics");
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Alchemy.Name")))) {
@@ -76,14 +76,13 @@ public class RedeemMenuEvent implements Listener {
 		    			event.setCancelled(true);
 		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 		    		} else {
-			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-			    			plugin.addCredits.put(player, "Alchemy");
-			    			player.closeInventory();
-			    		} else {
+			    		if (plugin.addCredits.containsKey(player)) {
+			    			// Still waiting on the chat fallback for an earlier pick
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    		} else {
+			    			new CreditRedeem(plugin).start(player, "Alchemy");
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Archery.Name")))) {
@@ -92,14 +91,13 @@ public class RedeemMenuEvent implements Listener {
 		    			event.setCancelled(true);
 		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 		    		} else {
-			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-			    			plugin.addCredits.put(player, "Archery");
-			    			player.closeInventory();
-			    		} else {
+			    		if (plugin.addCredits.containsKey(player)) {
+			    			// Still waiting on the chat fallback for an earlier pick
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    		} else {
+			    			new CreditRedeem(plugin).start(player, "Archery");
 			    		}
 		    		}
 				} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Maces.Name")))) {
@@ -108,14 +106,13 @@ public class RedeemMenuEvent implements Listener {
 						event.setCancelled(true);
 						player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 					} else {
-						if (!(plugin.addCredits.containsKey(player))) {
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-							plugin.addCredits.put(player, "Maces");
-							player.closeInventory();
-						} else {
+						if (plugin.addCredits.containsKey(player)) {
+							// Still waiting on the chat fallback for an earlier pick
 							String skill = plugin.addCredits.get(player);
 							player.closeInventory();
 							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+						} else {
+							new CreditRedeem(plugin).start(player, "Maces");
 						}
 					}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Axes.Name")))) {
@@ -124,14 +121,13 @@ public class RedeemMenuEvent implements Listener {
 						event.setCancelled(true);
 						player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 					} else {
-						if (!(plugin.addCredits.containsKey(player))) {
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-							plugin.addCredits.put(player, "Axes");
-							player.closeInventory();
-						} else {
+						if (plugin.addCredits.containsKey(player)) {
+							// Still waiting on the chat fallback for an earlier pick
 							String skill = plugin.addCredits.get(player);
 							player.closeInventory();
 							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+						} else {
+							new CreditRedeem(plugin).start(player, "Axes");
 						}
 					}
 				} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Crossbows.Name")))) {
@@ -140,14 +136,13 @@ public class RedeemMenuEvent implements Listener {
 						event.setCancelled(true);
 						player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 					} else {
-						if (!(plugin.addCredits.containsKey(player))) {
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-							plugin.addCredits.put(player, "Crossbows");
-							player.closeInventory();
-						} else {
+						if (plugin.addCredits.containsKey(player)) {
+							// Still waiting on the chat fallback for an earlier pick
 							String skill = plugin.addCredits.get(player);
 							player.closeInventory();
 							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+						} else {
+							new CreditRedeem(plugin).start(player, "Crossbows");
 						}
 					}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Excavation.Name")))) {
@@ -156,14 +151,13 @@ public class RedeemMenuEvent implements Listener {
 		    			event.setCancelled(true);
 		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 		    		} else {
-			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-			    			plugin.addCredits.put(player, "Excavation");
-			    			player.closeInventory();
-			    		} else {
+			    		if (plugin.addCredits.containsKey(player)) {
+			    			// Still waiting on the chat fallback for an earlier pick
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    		} else {
+			    			new CreditRedeem(plugin).start(player, "Excavation");
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Fishing.Name")))) {
@@ -172,14 +166,13 @@ public class RedeemMenuEvent implements Listener {
 		    			event.setCancelled(true);
 		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 		    		} else {
-			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-			    			plugin.addCredits.put(player, "Fishing");
-			    			player.closeInventory();
-			    		} else {
+			    		if (plugin.addCredits.containsKey(player)) {
+			    			// Still waiting on the chat fallback for an earlier pick
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    		} else {
+			    			new CreditRedeem(plugin).start(player, "Fishing");
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Herbalism.Name")))) {
@@ -188,14 +181,13 @@ public class RedeemMenuEvent implements Listener {
 		    			event.setCancelled(true);
 		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 		    		} else {
-			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-			    			plugin.addCredits.put(player, "Herbalism");
-			    			player.closeInventory();
-			    		} else {
+			    		if (plugin.addCredits.containsKey(player)) {
+			    			// Still waiting on the chat fallback for an earlier pick
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    		} else {
+			    			new CreditRedeem(plugin).start(player, "Herbalism");
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Mining.Name")))) {
@@ -204,14 +196,13 @@ public class RedeemMenuEvent implements Listener {
 		    			event.setCancelled(true);
 		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 		    		} else {
-			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-			    			plugin.addCredits.put(player, "Mining");
-			    			player.closeInventory();
-			    		} else {
+			    		if (plugin.addCredits.containsKey(player)) {
+			    			// Still waiting on the chat fallback for an earlier pick
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    		} else {
+			    			new CreditRedeem(plugin).start(player, "Mining");
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Repair.Name")))) {
@@ -220,14 +211,13 @@ public class RedeemMenuEvent implements Listener {
 		    			event.setCancelled(true);
 		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 		    		} else {
-			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-			    			plugin.addCredits.put(player, "Repair");
-			    			player.closeInventory();
-			    		} else {
+			    		if (plugin.addCredits.containsKey(player)) {
+			    			// Still waiting on the chat fallback for an earlier pick
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    		} else {
+			    			new CreditRedeem(plugin).start(player, "Repair");
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Swords.Name")))) {
@@ -236,14 +226,13 @@ public class RedeemMenuEvent implements Listener {
 		    			event.setCancelled(true);
 		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 		    		} else {
-			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-			    			plugin.addCredits.put(player, "Swords");
-			    			player.closeInventory();
-			    		} else {
+			    		if (plugin.addCredits.containsKey(player)) {
+			    			// Still waiting on the chat fallback for an earlier pick
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    		} else {
+			    			new CreditRedeem(plugin).start(player, "Swords");
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Taming.Name")))) {
@@ -252,14 +241,13 @@ public class RedeemMenuEvent implements Listener {
 						event.setCancelled(true);
 						player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 					} else {
-						if (!(plugin.addCredits.containsKey(player))) {
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-							plugin.addCredits.put(player, "Taming");
-							player.closeInventory();
-						} else {
+						if (plugin.addCredits.containsKey(player)) {
+							// Still waiting on the chat fallback for an earlier pick
 							String skill = plugin.addCredits.get(player);
 							player.closeInventory();
 							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+						} else {
+							new CreditRedeem(plugin).start(player, "Taming");
 						}
 					}
 				} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Tridents.Name")))) {
@@ -268,14 +256,13 @@ public class RedeemMenuEvent implements Listener {
 						event.setCancelled(true);
 						player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 					} else {
-						if (!(plugin.addCredits.containsKey(player))) {
-							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-							plugin.addCredits.put(player, "Tridents");
-							player.closeInventory();
-						} else {
+						if (plugin.addCredits.containsKey(player)) {
+							// Still waiting on the chat fallback for an earlier pick
 							String skill = plugin.addCredits.get(player);
 							player.closeInventory();
 							player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+						} else {
+							new CreditRedeem(plugin).start(player, "Tridents");
 						}
 					}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Unarmed.Name")))) {
@@ -284,14 +271,13 @@ public class RedeemMenuEvent implements Listener {
 		    			event.setCancelled(true);
 		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 		    		} else {
-			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-			    			plugin.addCredits.put(player, "Unarmed");
-			    			player.closeInventory();
-			    		} else {
+			    		if (plugin.addCredits.containsKey(player)) {
+			    			// Still waiting on the chat fallback for an earlier pick
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    		} else {
+			    			new CreditRedeem(plugin).start(player, "Unarmed");
 			    		}
 		    		}
 		    	} else if (DisplayName.equals(new StringUtils().addColor(this.plugin.getMessage("Menu.Woodcutting.Name")))) {
@@ -300,14 +286,13 @@ public class RedeemMenuEvent implements Listener {
 		    			event.setCancelled(true);
 		    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("SkillDisabledMessage")));
 		    		} else {
-			    		if (!(plugin.addCredits.containsKey(player))) {
-			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("Prefix") + this.plugin.getMessage("CreditAssignmentMessage").replace("%CREDITS%", credits)));
-			    			plugin.addCredits.put(player, "Woodcutting");
-			    			player.closeInventory();
-			    		} else {
+			    		if (plugin.addCredits.containsKey(player)) {
+			    			// Still waiting on the chat fallback for an earlier pick
 			    			String skill = plugin.addCredits.get(player);
 			    			player.closeInventory();
 			    			player.sendMessage(new StringUtils().addColor(this.plugin.getMessage("ErrorPrefix") + this.plugin.getMessage("CreditInProgressMessage").replace("%SKILL%", skill).replace("%CREDITS%", credits)));
+			    		} else {
+			    			new CreditRedeem(plugin).start(player, "Woodcutting");
 			    		}
 		    		}
 		    	}
